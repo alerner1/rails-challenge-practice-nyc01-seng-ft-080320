@@ -1,0 +1,19 @@
+<h1><%= @building.name %></h1>
+<p>Address: <%= "#{@building.address}, #{@building.country}" %> </p>
+<p>Rent per floor: <%= @building.rent_per_floor %></p>
+<p>Number of floors: <%= @building.number_of_floors %></p>
+
+<p>
+  Companies in this building:<br>
+  <% @building.companies.uniq.each do |company| %>
+    <%= company.name %><br>
+  <% end %>
+</p>
+
+<p>
+  Total rent earned by this building: $<%= @building.total_rent %>
+</p>
+
+<p>
+  <%= link_to "Update This Building", edit_building_path(@building) %>
+</p>

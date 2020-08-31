@@ -1,0 +1,23 @@
+<h1><%= @company.name %></h1>
+
+<h3>Locations:</h3>
+<p>
+  <% @company.offices.each do |office| %>
+    <%= "#{office.building.name} building, floor #{office.floor}." %><br>
+  <% end %>
+</p>
+
+<h6>Total rent: $<%= @company.total_rent %></h6>
+
+<h3>Employees:</h3>
+<p>
+  <% @company.employees.each do |employee| %>
+    <%= employee.name %>
+    <%= form_for employee, :method => :delete do |f| %>
+      <%= button_to "Delete this Employee", company_path(@company) %>
+    <% end %>
+  <% end %>
+</p>
+<p>
+  <%= link_to "Add an Employee", new_employee_path %>
+</p>
